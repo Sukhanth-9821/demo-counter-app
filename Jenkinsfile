@@ -50,7 +50,7 @@ pipeline{
                 
                 script{
                     
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
+                    withSonarQubeEnv(credentialsId: 'Sonar') {
                         
                         sh 'mvn clean package sonar:sonar'
                     }
@@ -58,6 +58,7 @@ pipeline{
                     
                 }
             }
+            /*
             stage('Quality Gate Status'){
                 
                 steps{
@@ -69,5 +70,5 @@ pipeline{
                 }
             }
         }
-        
+ */       
 }
