@@ -75,8 +75,8 @@ pipeline{
                     
                     script{
                         def pom = readMavenPom file: 'pom.xml'
-
-                        nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']], credentialsId: 'Nexus', groupId: "${pom.groupId}", nexusUrl: '15.207.18.215:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'demorepo', version: "${pom.version}"
+                        def reposelect = pom.version.endsWith("SNAPSHOT")? "demorepo-snapshot":"demorepo"
+                        nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']], credentialsId: 'Nexus', groupId: "${pom.groupId}", nexusUrl: '15.207.18.215:8081', nexusVersion: 'nexus3', protocol: 'http', repository: reposelect, version: "${pom.version}"
                     }
                 }
             }
