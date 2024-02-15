@@ -8,7 +8,7 @@
 		<version>2.6.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.example.Barc</groupId>
 	<artifactId>springboot</artifactId>
 	<version>1.0.0</version>
 	<name>springboot</name>
