@@ -59,7 +59,7 @@ pipeline{
                 }
             }
             
-            stage('Quality Gate Status'){
+        stage('Quality Gate Status'){
                 
                 steps{
                     
@@ -68,7 +68,18 @@ pipeline{
                         waitForQualityGate abortPipeline: false, credentialsId: 'Sonar'
                     }
                 }
-            }   
-        }
+            } 
+        stage('Nexus Upload'){
+                
+                steps{
+                    
+                    script{
+                        
+                        nexusArtifactUploader artifacts: [[artifactId: 'springboot', classifier: '', file: 'target/Uber.jar', type: 'jar']], credentialsId: 'Nexus', groupId: 'com.example', nexusUrl: '15.207.18.215:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'demorepo', version: '1.0.0'
+                    }
+                }
+            }
+
+    }
      
 }
